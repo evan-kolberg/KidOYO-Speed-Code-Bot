@@ -3,7 +3,7 @@ import random as r
 import time
 
 #
-# CURRENT BEST WPM: 75
+# CURRENT BEST WPM: 76
 #
 
 backslash = ""
@@ -31,6 +31,8 @@ data = {
     'python16': """myDict = {|"hello": "an expression of greeting",|"world": "everything that exists anywhere"|}|print "Query - hello:", myDict["hello"]|menu = {|"milk": 3.72,|"bacon": 4.98,|"burger": 3.5|}|print "Price of bacon is", menu["bacon"]|if menu.has_key("milk"):|print "We have milk"|else:|print "Sorry, we don't have milk"|if "milk" in menu:|print "We have milk"|print menu.keys()|print "* Menu:"|for (key, value) in menu.items():|print key, ":", value|menu["milk"] = 3.82|menu["sausage"] = 4.94|print menu|menu.pop("burger")|print menu|""",
     'python17': """calories = {|"apple": 95,|"banana": 105,|"pineapple": 402,|"orange": 45,|"mango": 201,|}|import time|answer = ""|totalCalories = 0|while answer != "done":|answer = raw_input("What do you want?\\n %s \\nInput 'done' to finish" %|calories.keys())|answer = answer.lower()|if answer in calories:|print "You choose", answer|totalCalories += calories[answer]|elif answer == "done":|continue|else:|print "Sorry, we don't have", answer|time.sleep(0.2)|print "Total calories:", totalCalories|""",
     'python18': """def printInfo():|print "John"|print "Address: 10 xyz lane"|print "Favorite color: blue"|print "Favorite coding language: Python"|print|printInfo()|printInfo()|def printInfo(name, addr, color, lang):|print name|print "Address:", addr|print "Favorite color:", color|print "Favorite coding language:", lang|print|printInfo("Bob", "11 abc Lane", "green", "Java")|printInfo("Alice", "236 meadow dr", "pink", "Scratch")|def add(a, b):|return a + b|c = add(1, 2)|print "sum is:", c|print|def checkPlease(price, taxRate, tipsRate):|tax = price * taxRate|tips = price * tipsRate|total = price + tax + tips|return total|print "Your total is:", checkPlease(13.5, 0.05, 0.15)|""",
+    'python19': """speed = 10|def speedUp1():|print "I am going to change the speed"|speed = 20|speedUp1()|print "After calling speedUp1, current speed is:", speed|print|def speedUp2():|global speed|print "I declare speed is the global one"|print "I am going to really change the speed"|speed = 20|speedUp2()|print "After calling speedUp2, current speed is:", speed|""",
+
 }
 
 
@@ -41,18 +43,19 @@ def run(given):
     for i in data[given]:
         if i == '|':
             pyautogui.press('enter')
-        elif i.isalpha:
-            time.sleep(r.randint(1, 90) / 1000)
+        elif i.isalpha():
+            time.sleep(0.001)  # waiting 0.001 seconds is the lowest on Win
             pyautogui.typewrite(i)
-        elif i.isnumeric:
-            time.sleep(r.randint(60, 320) / 1000)
+        elif i.isnumeric():
+            time.sleep(r.randint(10, 90) / 1000)
             pyautogui.typewrite(i)
         elif i == '':
-            time.sleep(r.randint(60, 140) / 1000)
+            time.sleep(r.randint(1, 5) / 1000)
             pyautogui.typewrite('')
         else:
-            time.sleep(r.randint(100, 530) / 1000)
+            time.sleep(r.randint(20, 200) / 1000)
             pyautogui.typewrite(i)
+
 
 for i in chosen:
     if i.isalpha():
@@ -68,12 +71,11 @@ else:
     print('Such challenge does not exist or has not been added in this program')
     quit()
 
-input('Press Enter to Start - You will have 3 seconds to get in position:  ')
+input('Press Enter to Start - You will have 3 seconds to get in position:\n')
 time.sleep(3)
 
 if __name__ == '__main__':
     run(filtered)
-
 
 # Area to get raw challenge data
 # Make sure all lines are line up against the left wall
@@ -82,8 +84,3 @@ if __name__ == '__main__':
 # CTRL + \ -> DEL -> END
 # Makes a | at the end of the first line and deletes the space between the next, repeat
 # If faced with a backslash n, make it \\n
-
-
-
-
-
