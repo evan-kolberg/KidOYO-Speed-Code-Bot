@@ -3,13 +3,9 @@ import random as r
 import time
 
 #
-# CURRENT BEST WPM: 76
+# CURRENT BEST WPM: 78
 #
 
-backslash = ""
-
-chosen = input('Enter the challenge you would like to bot (ex. python7):  ')
-filtered = ''
 
 # after each entry comes a comma
 data = {
@@ -32,6 +28,9 @@ data = {
     'python17': """calories = {|"apple": 95,|"banana": 105,|"pineapple": 402,|"orange": 45,|"mango": 201,|}|import time|answer = ""|totalCalories = 0|while answer != "done":|answer = raw_input("What do you want?\\n %s \\nInput 'done' to finish" %|calories.keys())|answer = answer.lower()|if answer in calories:|print "You choose", answer|totalCalories += calories[answer]|elif answer == "done":|continue|else:|print "Sorry, we don't have", answer|time.sleep(0.2)|print "Total calories:", totalCalories|""",
     'python18': """def printInfo():|print "John"|print "Address: 10 xyz lane"|print "Favorite color: blue"|print "Favorite coding language: Python"|print|printInfo()|printInfo()|def printInfo(name, addr, color, lang):|print name|print "Address:", addr|print "Favorite color:", color|print "Favorite coding language:", lang|print|printInfo("Bob", "11 abc Lane", "green", "Java")|printInfo("Alice", "236 meadow dr", "pink", "Scratch")|def add(a, b):|return a + b|c = add(1, 2)|print "sum is:", c|print|def checkPlease(price, taxRate, tipsRate):|tax = price * taxRate|tips = price * tipsRate|total = price + tax + tips|return total|print "Your total is:", checkPlease(13.5, 0.05, 0.15)|""",
     'python19': """speed = 10|def speedUp1():|print "I am going to change the speed"|speed = 20|speedUp1()|print "After calling speedUp1, current speed is:", speed|print|def speedUp2():|global speed|print "I declare speed is the global one"|print "I am going to really change the speed"|speed = 20|speedUp2()|print "After calling speedUp2, current speed is:", speed|""",
+    'python20': """def fibonacci(num):|if num == 0:|return 0|if num == 1:|return 1|return fibonacci(num-2) + fibonacci(num-1)|for i in range(10):|print fibonacci(i),|print|def power(base, exp):|if exp == 0:|return 1|return base * power(base, exp-1)|print "2^5 is:", power(2, 5)|print "3^2 is:", power(3, 2)|print "4^5 is:", power(4, 5)|""",
+    'python21': """import math|class Circle:|def __init__(self, radius):|self.radius = radius|def circumference(self):|return 2 * math.pi * self.radius|def area(self):|return math.pi * self.radius * self.radius|c1 = Circle(1.2)|print "Circle c1"|print "- radius:", c1.radius|print "- circumference:", c1.circumference()|print "- area:", c1.area()|c2 = Circle(2.5)|print "Circle c2"|print "- radius:", c2.radius|print "- circumference:", c2.circumference()|print "- area:", c2.area()|""",
+    'python22': """class Person:|def __init__(self, name, birthyear):|self.name = name|self.birthyear = birthyear|def printInfo(self):|print "Name:", self.name|print "Year of birth:", self.birthyear|class Student(Person):|def __init__(self, name, birthyear, school):|Person.__init__(self, name, birthyear)|self.school = school|def printInfo(self):|Person.printInfo(self)|print "School:", self.school|class CollegeStudent(Student):|def __init__(self, name, birthyear, school, major):|Student.__init__(self, name, birthyear, school)|self.major = major|def printInfo(self):|Student.printInfo(self)|print "Major:", self.major|student1 = Student("Alice", 2000, "Meadow High School")|student1.printInfo()|print "-" * 10|student2 = CollegeStudent("Bob", 1996, "MIT", "Computer Science")|student2.printInfo()|""",
 
 }
 
@@ -44,18 +43,21 @@ def run(given):
         if i == '|':
             pyautogui.press('enter')
         elif i.isalpha():
-            time.sleep(0.001)  # waiting 0.001 seconds is the lowest on Win
+            time.sleep(r.randint(1, 8) / 1000)
             pyautogui.typewrite(i)
         elif i.isnumeric():
-            time.sleep(r.randint(10, 90) / 1000)
+            time.sleep(r.randint(1, 100) / 1000)
             pyautogui.typewrite(i)
         elif i == '':
-            time.sleep(r.randint(1, 5) / 1000)
+            time.sleep(r.randint(1, 20) / 1000)
             pyautogui.typewrite('')
         else:
-            time.sleep(r.randint(20, 200) / 1000)
+            time.sleep(r.randint(15, 300) / 1000)
             pyautogui.typewrite(i)
 
+
+chosen = input('Enter the challenge you would like to bot (ex. python7):\n')
+filtered = ''
 
 for i in chosen:
     if i.isalpha():
@@ -72,7 +74,12 @@ else:
     quit()
 
 input('Press Enter to Start - You will have 3 seconds to get in position:\n')
-time.sleep(3)
+print('RELEASE')
+time.sleep(1)
+print('THE')
+time.sleep(1)
+print('HOUND')
+time.sleep(1)
 
 if __name__ == '__main__':
     run(filtered)
@@ -84,3 +91,9 @@ if __name__ == '__main__':
 # CTRL + \ -> DEL -> END
 # Makes a | at the end of the first line and deletes the space between the next, repeat
 # If faced with a backslash n, make it \\n
+
+
+
+
+
+
