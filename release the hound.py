@@ -31,7 +31,7 @@ data = {
     'python20': """def fibonacci(num):|if num == 0:|return 0|if num == 1:|return 1|return fibonacci(num-2) + fibonacci(num-1)|for i in range(10):|print fibonacci(i),|print|def power(base, exp):|if exp == 0:|return 1|return base * power(base, exp-1)|print "2^5 is:", power(2, 5)|print "3^2 is:", power(3, 2)|print "4^5 is:", power(4, 5)|""",
     'python21': """import math|class Circle:|def __init__(self, radius):|self.radius = radius|def circumference(self):|return 2 * math.pi * self.radius|def area(self):|return math.pi * self.radius * self.radius|c1 = Circle(1.2)|print "Circle c1"|print "- radius:", c1.radius|print "- circumference:", c1.circumference()|print "- area:", c1.area()|c2 = Circle(2.5)|print "Circle c2"|print "- radius:", c2.radius|print "- circumference:", c2.circumference()|print "- area:", c2.area()|""",
     'python22': """class Person:|def __init__(self, name, birthyear):|self.name = name|self.birthyear = birthyear|def printInfo(self):|print "Name:", self.name|print "Year of birth:", self.birthyear|class Student(Person):|def __init__(self, name, birthyear, school):|Person.__init__(self, name, birthyear)|self.school = school|def printInfo(self):|Person.printInfo(self)|print "School:", self.school|class CollegeStudent(Student):|def __init__(self, name, birthyear, school, major):|Student.__init__(self, name, birthyear, school)|self.major = major|def printInfo(self):|Student.printInfo(self)|print "Major:", self.major|student1 = Student("Alice", 2000, "Meadow High School")|student1.printInfo()|print "-" * 10|student2 = CollegeStudent("Bob", 1996, "MIT", "Computer Science")|student2.printInfo()|""",
-
+    'python23': """from turtle import Turtle|t = Turtle()|t.setposition(-200, 200)|t.forward(100)|t.right(90)|t.forward(80)|t.circle(40)|t.color("red")|t.circle(40, 180)|t.shape("turtle")|t.stamp()|t.forward(100)|t.setposition(0, 0)|t.goto(50, 50)|t.goto(100, 0)|t.goto(0, 0)|t.goto(0, -100)|t.goto(100, -100)|t.goto(100, 0)|t.setposition(40, -100)|t.goto(40, -50)|t.goto(60, -50)|t.goto(60, -100)|t.color("green")|t.setposition(50, -90)|""",
 }
 
 
@@ -42,17 +42,17 @@ def run(given):
     for i in data[given]:
         if i == '|':
             pyautogui.press('enter')
+        elif i == '':
+            time.sleep(r.randint(0, 2) / 1000)
+            pyautogui.typewrite('')
         elif i.isalpha():
             time.sleep(r.randint(1, 8) / 1000)
             pyautogui.typewrite(i)
         elif i.isnumeric():
             time.sleep(r.randint(1, 100) / 1000)
             pyautogui.typewrite(i)
-        elif i == '':
-            time.sleep(r.randint(1, 20) / 1000)
-            pyautogui.typewrite('')
         else:
-            time.sleep(r.randint(15, 300) / 1000)
+            time.sleep(r.randint(1, 200) / 1000)
             pyautogui.typewrite(i)
 
 
