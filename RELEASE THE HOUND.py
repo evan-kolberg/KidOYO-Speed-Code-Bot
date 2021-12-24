@@ -26,16 +26,16 @@ def run(input_lang, input_num):
         if i == '|':
             pyautogui.press('enter')
         elif i == '':
-            time.sleep(r.randint(0, 2) / 1000)
+            time.sleep(r.randint(0, 5) / 1000)
             pyautogui.typewrite('')
         elif i.isalpha():
-            time.sleep(r.randint(1, 10) / 1000)
+            time.sleep(r.randint(1, 15) / 1000)
             pyautogui.typewrite(i)
         elif i.isnumeric():
-            time.sleep(r.randint(1, 100) / 1000)
+            time.sleep(r.randint(1, 120) / 1000)
             pyautogui.typewrite(i)
         else:
-            time.sleep(r.randint(1, 200) / 1000)
+            time.sleep(r.randint(1, 250) / 1000)
             pyautogui.typewrite(i)
 
 
@@ -54,7 +54,7 @@ for i in chosen:
         quit()
 
 try:
-    challenges.data.get([lang][int(num)-1])
+    challenges.data[lang][num]
 except:
     print('\nSorry, that challenge hasn\'t been added yet')
     quit()
@@ -75,7 +75,9 @@ if __name__ == '__main__':
     run(lang, num)
 
 """
-* CTRL + \ -> DEL -> END  ~ Perform this order at the end of the first line when you paste
+// Use this area below to compress new challenges to add to the data //
+/ Some Tips /
+* (CTRL + \) -> DEL -> END  ~ Perform this order at the end of the first line when you paste
 Repeat this order for as long as the challenge is
 * Make sure all lines are line up against the left wall
 To do this, start at the top most left character
@@ -85,8 +87,4 @@ Then go down using arrow key - if there is empty space - do CRTL + DEL
 * If faced with a backslash n, make it \\n
 * Operational symbols such as *,/,+,%, etc. MAY have a space before and after it - Make sure to remove
 """
-
-
-
-
 
