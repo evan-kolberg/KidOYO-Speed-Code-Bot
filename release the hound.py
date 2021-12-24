@@ -30,7 +30,7 @@ data = {
     'python15': """from random import randint|myList = []|for counter in range(10):|myList.append(randint(1, 100))|print "Before sorting:"|print myList|iterCount = 1|for index in range(1, len(myList)):|currValue = myList[index]|position = index|while position > 0 and myList[position - 1] > currValue:|myList[position] = myList[position - 1]|position = position - 1|myList[position] = currValue|print "Iteration", iterCount, ":", myList|iterCount += 1|print "After sorting:"|print myList|""",
     'python16': """myDict = {|"hello": "an expression of greeting",|"world": "everything that exists anywhere"|}|print "Query - hello:", myDict["hello"]|menu = {|"milk": 3.72,|"bacon": 4.98,|"burger": 3.5|}|print "Price of bacon is", menu["bacon"]|if menu.has_key("milk"):|print "We have milk"|else:|print "Sorry, we don't have milk"|if "milk" in menu:|print "We have milk"|print menu.keys()|print "* Menu:"|for (key, value) in menu.items():|print key, ":", value|menu["milk"] = 3.82|menu["sausage"] = 4.94|print menu|menu.pop("burger")|print menu|""",
     'python17': """calories = {|"apple": 95,|"banana": 105,|"pineapple": 402,|"orange": 45,|"mango": 201,|}|import time|answer = ""|totalCalories = 0|while answer != "done":|answer = raw_input("What do you want?\\n %s \\nInput 'done' to finish" %|calories.keys())|answer = answer.lower()|if answer in calories:|print "You choose", answer|totalCalories += calories[answer]|elif answer == "done":|continue|else:|print "Sorry, we don't have", answer|time.sleep(0.2)|print "Total calories:", totalCalories|""",
-
+    'python18': """def printInfo():|print "John"|print "Address: 10 xyz lane"|print "Favorite color: blue"|print "Favorite coding language: Python"|print|printInfo()|printInfo()|def printInfo(name, addr, color, lang):|print name|print "Address:", addr|print "Favorite color:", color|print "Favorite coding language:", lang|print|printInfo("Bob", "11 abc Lane", "green", "Java")|printInfo("Alice", "236 meadow dr", "pink", "Scratch")|def add(a, b):|return a + b|c = add(1, 2)|print "sum is:", c|print|def checkPlease(price, taxRate, tipsRate):|tax = price * taxRate|tips = price * tipsRate|total = price + tax + tips|return total|print "Your total is:", checkPlease(13.5, 0.05, 0.15)|""",
 }
 
 
@@ -82,4 +82,8 @@ if __name__ == '__main__':
 # CTRL + \ -> DEL -> END
 # Makes a | at the end of the first line and deletes the space between the next, repeat
 # If faced with a backslash n, make it \\n
+
+
+
+
 
