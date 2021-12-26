@@ -14,7 +14,7 @@ Step 2: Type in the challenge name with number (ex. python7, html9)
 Step 3: Refresh chrome tab
 Step 4: Once your chrome tab is refreshed, click on the typing box (or anywhere on the site)
 to get ready for the hound to type away
-Step 5: Press enter on your keyboard as soon as the T-Countown gets to 3 (T-0:03)
+Step 5: Press enter on your keyboard as soon as the T-Countdown gets to 3 (T-0:03)
 Step 6: Enjoy climbing to the top of the leaderboards and blowing though badges!
 """
 
@@ -39,13 +39,13 @@ def run(input_lang, input_num):
             pyautogui.typewrite(i)
 
 
-chosen = input('Enter the challenge you would like to bot (ex. python7):\n')
+chosen = input('Enter the challenge you would like to bot (ex. python7, c++9):\n')
 
 lang = ''
 num = ''
 
 for i in chosen:
-    if i.isalpha():
+    if i.isalpha() or i == '+':
         lang += i
     elif i.isnumeric():
         num += i
@@ -60,8 +60,8 @@ except:
     quit()
 
 
-print('\nOnce you refresh your Speed Code tab, click on the typing box\n'
-      'when T-0:05 and press enter when T-0:03 ~ The 3 second countdown will start')
+print('\nGo get ready in the Speed Code Lobby. Once you are ready, click on the challenge\n'
+      'and press enter when T-0:03. Enjoy!')
 keyboard.wait('enter')
 print('3')
 time.sleep(1)
@@ -73,18 +73,4 @@ print('\nR E L E A S E    T H E    H O U N D')
 
 if __name__ == '__main__':
     run(lang, num)
-
-"""
-// Use this area below to compress new challenges to add to the data //
-/ Some Tips /
-* (CTRL + \) -> DEL -> END  ~ Perform this order at the end of the first line when you paste
-Repeat this order for as long as the challenge is
-* Make sure all lines are line up against the left wall
-To do this, start at the top most left character
-Then go down using arrow key - if there is empty space - do CRTL + DEL
-* No extra spaces before line
-* Fix broken print statements if needed
-* If faced with a backslash n, make it \\n
-* Operational symbols such as *,/,+,%, etc. MAY have a space before and after it - Make sure to remove
-"""
 

@@ -45,4 +45,24 @@ data = {
     'html': {
         '1': """<!DOCTYPE html>|<html>|<head>|<title>Boilerplate</title>|</head>|<body>|Hello world! A HTML tag is like a container. An opening tag starts with a|pointy bracket followed by a tag name and a closing tag starts with a pointy bracket and a forward slash followed by the tag name.|</body>|</html>|""",
     },
+
+    'c++': {
+        '1': """#include <iostream>|int main() {|std::cout << "Hello World!" << std::endl;|std::cout << 123 << std::endl;|std::cout << "Change to your own string here" << std::endl;|return 0;|}|""",
+    }
 }
+
+
+"""
+// Use this area below to compress new challenges to add to the data //
+/ Some Tips /
+* (CTRL + \) -> DEL -> END  ~ Perform this order at the end of the first line when you paste
+Repeat this order for as long as the challenge is
+* Make sure all lines are line up against the left wall
+To do this, start at the top most left character
+Then go down using arrow key - if there is empty space - do CRTL + DEL
+* No extra spaces before line
+* Fix broken print statements if needed
+* If faced with a backslash n, make it \\n
+* Operational symbols such as *,/,+,%, etc. MAY have a space before and after it - Make sure to remove
+"""
+
