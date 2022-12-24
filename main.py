@@ -51,9 +51,7 @@ if __name__ == '__main__':
 
         if int(num) != 40:
             print('Cool! Let\'s move on to the next one')
-            num = int(num)
-            num += 1
-            num = str(num)
+            num = str(int(num) + 1)
             continue
 
         elif int(num) == 40:
