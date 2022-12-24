@@ -30,11 +30,23 @@ def select_a_challenge():
     global lang, num
     choice = input('Enter the challenge you would like to bot (ex. python7, c++9):\n')
     for i in choice:
-        if i.isalpha() or i == '+': lang += i
-        elif i.isnumeric(): num += i
-        else: print('ERROR: INVALID INPUT'); quit()
-    try: challenges.data[lang][num]
-    except: print('\nSorry, that challenge hasn\'t been added yet'); quit()
+        if i.isalpha() or i == '+': 
+            lang += i
+        elif i.isnumeric(): 
+            num += i
+        else: 
+            print('ERROR: INVALID INPUT')
+
+    if 'python' not in lang and 'html' not in lang and 'c++' and 'java' not in lang:
+        if int(num) > 40 or int(num) < 1:
+            print('ERROR: INVALID INPUT')
+            quit()
+    
+    if challenges.data[lang][num] == '':
+        print('\nSorry, that challenge hasn\'t been added yet')
+        quit()
+        
+        
 
 
 if __name__ == '__main__':
