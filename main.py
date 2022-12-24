@@ -16,15 +16,12 @@ def run(input_lang, input_num):
             if i.isalnum() == False:
                 if r.randint(0,20) <= 1:
                     zzz = r.randint(200, 500)/1000
-                    print(zzz)
                     time.sleep(zzz)
                 else:
                     zzz = r.randint(0, 150)/1000
-                    print(zzz)
                     time.sleep(zzz)
             else:
                 zzz = r.randint(0, 100)/1000
-                print(zzz)
                 time.sleep(zzz) 
         keyboard.send('enter')
 
@@ -52,13 +49,15 @@ if __name__ == '__main__':
 
         run(lang, num)
 
-        procede = input('Do you wanna go onto the next one? (yes or no):  ')
-
-        if procede == 'yes' and num != 40:
+        if int(num) != 40:
+            print('Cool! Let\'s move on to the next one')
+            num = int(num)
             num += 1
+            num = str(num)
             continue
 
-        elif procede == 'yes' and num == 40:
+        elif int(num) == 40:
+            print('Looks like you have comlpete all the exercises in this language')
             select_a_challenge()
         
         else:
