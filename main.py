@@ -10,7 +10,7 @@ num = ''
 
 
 def run(input_lang, input_num):
-    for i in challenges.data[input_lang][input_num].split('|'):
+    for i in challenges.data[input_lang][input_num].split('ᨆ'):
         for j in i:
             keyboard.write(j)
             if i.isalnum() == False:
@@ -34,17 +34,20 @@ def select_a_challenge():
             lang += i
         elif i.isnumeric(): 
             num += i
-        else: 
+        else:
             print(Fore.RED + '\nERROR: INVALID INPUT')
             quit()
 
-    if 'python' not in lang and 'html' not in lang and 'c++' and 'java' not in lang:
-        if int(num) > 40 or int(num) < 1:
-            print(Fore.RED + '\nERROR: INVALID INPUT')
+    if lang == 'python' or lang == 'html' or lang == 'c++' or lang == 'java':
+        if int(num) <= 40 and int(num) >= 1:
+            if challenges.data[lang][num] == '':
+                print(Fore.MAGENTA + '\nSorry, that challenge hasn\'t been added yet')
+                quit()
+        else:
+            print(Fore.RED + '\nERROR: INVALID NUM')
             quit()
-    
-    if challenges.data[lang][num] == '':
-        print(Fore.MAGENTA + '\nSorry, that challenge hasn\'t been added yet')
+    else:
+        print(Fore.RED + '\nERROR: INVALID LANG')
         quit()
 
 
@@ -54,10 +57,10 @@ if __name__ == '__main__':
 
     while True:
 
-        print(Fore.WHITE + '\nWhen you press ENTER, you have 3 seconds until the program will simulate keyboard input')
+        print(Fore.WHITE + '\nPress ENTER to start the 2 second countdown...')
         keyboard.wait('enter')
 
-        time.sleep(3)
+        time.sleep(2)
 
         run(lang, num)
 
@@ -70,7 +73,7 @@ if __name__ == '__main__':
             continue
 
         elif int(num) == 40:
-            print(Fore.GREEN + '\nLooks like you have comlpete all the exercises in this language')
+            print(Fore.GREEN + '\nLooks like you have comlpete all the exercises in this language\n')
             select_a_challenge()
         
         else:

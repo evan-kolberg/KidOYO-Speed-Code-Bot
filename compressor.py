@@ -1,7 +1,7 @@
 import re
 import subprocess
 
-# used this expunging method from Markus Jarderot
+# used this method from Markus Jarderot to expunge comments
 # https://stackoverflow.com/a/241506/13793957
 
 # problem: when there is a \t in the code, 
@@ -25,26 +25,39 @@ def comment_remover(text):
         else:
             y += i.strip()
             if i != x.split()[-1]:
-                y += '|'
+                y += 'ᨆ'
 
     return y
 
 
-x = """public class PrintStatement {
-    // the main method is required for any code to run in Java
+x = """
+
+public class LeapYear {
     public static void main(String[] args) {
-        // This will print Hello World and then move to the next line
-        System.out.println("Hello World");
+        int year = 2104;
+        // if the year is divisible by 4, it is probably a leap year
+        boolean c1 = (year % 4 == 0);
+        // except if it is divisible by 100
+        boolean c2 = (year % 100 != 0);
+        // but if it is also divisible by 400 then it is a leap year
+        boolean c3 = (year % 100 == 0 && year % 400 == 0);
         
-        // This will print Good morning and then move to the next line
-        System.out.println("Good morning!");
-        
-        // This will print 'The T-rex has the PIE' and will NOT move to the next line
-        System.out.print("The T-rex has the PIE!");
+        // if the year is divisible by 4 and it is either (not divisible by 100) or (divisible by 400)
+        // then it is a leap year
+        if (c1 && (c2 || c3)) {
+            System.out.println(year + " is a leap year");
+        }
+        else {
+            System.out.println(year + " is not a leap year");
+        }
     }
-}"""
+}
+
+
+"""
 
 
 
 subprocess.run('pbcopy', text=True, input=comment_remover(x))
 print('Copied to clipboard!')
+
