@@ -1,12 +1,12 @@
 import random as r
 import time
 import keyboard
+from colorama import Fore
 
 import challenges
 
 lang = ''
 num = ''
-procede = ''
 
 
 def run(input_lang, input_num):
@@ -28,25 +28,25 @@ def run(input_lang, input_num):
 
 def select_a_challenge():
     global lang, num
-    choice = input('Enter the challenge you would like to bot (ex. python7, c++9):\n')
+    choice = input(Fore.WHITE + 'Enter the challenge you would like to bot (ex. python7, c++9):  ')
     for i in choice:
         if i.isalpha() or i == '+': 
             lang += i
         elif i.isnumeric(): 
             num += i
         else: 
-            print('ERROR: INVALID INPUT')
+            print(Fore.RED + '\nERROR: INVALID INPUT')
+            quit()
 
     if 'python' not in lang and 'html' not in lang and 'c++' and 'java' not in lang:
         if int(num) > 40 or int(num) < 1:
-            print('ERROR: INVALID INPUT')
+            print(Fore.RED + '\nERROR: INVALID INPUT')
             quit()
     
     if challenges.data[lang][num] == '':
-        print('\nSorry, that challenge hasn\'t been added yet')
+        print(Fore.MAGENTA + '\nSorry, that challenge hasn\'t been added yet')
         quit()
-        
-        
+
 
 
 if __name__ == '__main__':
@@ -54,7 +54,7 @@ if __name__ == '__main__':
 
     while True:
 
-        print('\nWhen you press ENTER, you have 3 seconds until the program will simulate keyboard input')
+        print(Fore.WHITE + '\nWhen you press ENTER, you have 3 seconds until the program will simulate keyboard input')
         keyboard.wait('enter')
 
         time.sleep(3)
@@ -62,15 +62,17 @@ if __name__ == '__main__':
         run(lang, num)
 
         if int(num) != 40:
-            print('Cool! Let\'s move on to the next one')
+            print(Fore.BLUE + 'Cool! Let\'s move on to the next one')
             num = str(int(num) + 1)
+            if challenges.data[lang][num] == '':
+                print(Fore.MAGENTA + '\nSorry, that challenge hasn\'t been added yet')
+                quit()
             continue
 
         elif int(num) == 40:
-            print('Looks like you have comlpete all the exercises in this language')
+            print(Fore.GREEN + '\nLooks like you have comlpete all the exercises in this language')
             select_a_challenge()
         
         else:
             break
 
-# use print colors in the console to make it look pretty
