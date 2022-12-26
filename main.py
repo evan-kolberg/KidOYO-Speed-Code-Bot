@@ -10,7 +10,7 @@ num = ''
 
 
 def run(input_lang, input_num):
-    for i in challenges.data[input_lang][input_num].split('ᨆ'):
+    for i in challenges.data[input_lang][input_num].split('⭔'):
         for j in i:
             keyboard.write(j)
             if i.isalnum() == False:
